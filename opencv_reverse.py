@@ -33,18 +33,37 @@ def mousepoints(event, x, y, flags, params):
         LED_y = y
         print("Button clicked")
 
+
 # Window with live camera feed
 while True:
     ret, frame = cap.read()
+    cv2.imshow("Camera Feed", frame)
     cv2.setMouseCallback("Camera Feed", mousepoints)
     if ledClicked:
-        sqc = coordinatefunction(LED_x, LED_y, r_size)  # Generates coordinates for square
-        cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)  # Creates square
-        crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]  # Crops to square
-        cv2.imshow("test crop", crop)
+        break
 
+    k = cv2.waitKey(1)
+    if k == 27:  # Escape key
+        break
+    else:
+        pass
+
+while True:
+    # Read camera
+    ret, frame = cap.read()
+
+    # Get cropping coordinates and crop
+    sqc = coordinatefunction(LED_x, LED_y, r_size)  # Generates coordinates for square
+    cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)  # Creates square
+    crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]  # Crops to square
+
+    # Show live camera feed and new cropped video
     cv2.imshow("Camera Feed", frame)
+    cv2.imshow("LED Area", crop)
 
+    # Threshold
+
+    # Wait for escape key
     k = cv2.waitKey(1)
     if k == 27:  # Escape key
         break

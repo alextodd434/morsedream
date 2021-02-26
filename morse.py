@@ -44,20 +44,20 @@ MorseCodes = {
 def textmorse(text):
     morse = []
     for t in text:
-        if t == '':
+        if t == ' ':
+            morse.pop()
             morse.append('x')
         else:
             morse.append(MorseCodes[t])
+            morse.append('y')
         # y gap between letters
-        morse.append('y')
     return morse
 
 
-def test(m):
-    for letter in m:
-        for symbol in letter:
-            print(symbol)
+def texttosymb(morselist):
+    symblist = []
+    for m in morselist:
+        for symbol in m:
+            symblist.append(symbol)
+    return symblist
 
-
-m = textmorse("hi alex")
-test(m)

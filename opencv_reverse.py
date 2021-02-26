@@ -57,9 +57,14 @@ while True:
     cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)  # Creates square
     crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]  # Crops to square
 
+    grey = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+    ret, thresh = cv2.threshold(grey, 100, 255, cv2.THRESH_BINARY)
+
     # Show live camera feed and new cropped video
     cv2.imshow("Camera Feed", frame)
     cv2.imshow("LED Area", crop)
+    cv2.imshow("grey", grey)
+    cv2.imshow("thresh", thresh)
 
     # Threshold
 

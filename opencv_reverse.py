@@ -42,6 +42,7 @@ def mousepoints(event, x, y, flags, params):
         y2 = int(LED_y + r_size / 2)
         print("Button clicked")
 
+
 # Window with live camera feed
 while True:
     ret, frame = cap.read()
@@ -49,7 +50,7 @@ while True:
     if ledClicked:
         cv2.rectangle(frame, (x1, y1), (x2, y2), r_colour, r_thickness)
         crop = frame[y1:y2, x1:x2]
-        cv2.imshow("test crop", crop)
+        cv2.imshow("LED Area", crop)
 
     cv2.imshow("Camera Feed", frame)
 

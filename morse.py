@@ -41,6 +41,9 @@ MorseCodes = {
     '0': 'lllll'}
 
 
+unmorse = {value: key for key, value in MorseCodes.items()}
+
+
 def textmorse(text):
     morse = []
     for t in text:
@@ -60,4 +63,5 @@ def texttosymb(morselist):
         for symbol in m:
             symblist.append(symbol)
     return symblist
+
 

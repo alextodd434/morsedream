@@ -10,8 +10,8 @@ GPIO.setup(17, GPIO.OUT)
 
 
 sleep(0.5) # example
-GPIO.output(17, True) # example
-GPIO.output(18, False) # example
+GPIO.output(17, True)  # example
+GPIO.output(18, False)  # example
 
 
 

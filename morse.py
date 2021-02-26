@@ -76,4 +76,4 @@ def morsetotext(morsecode):
     return sentence
 
 
-morsetotext('.... .. / .--- .- -.- .')
+#morsetotext('.... .. / .--- .- -.- .')

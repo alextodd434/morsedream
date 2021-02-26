@@ -36,7 +36,9 @@ def theleds(thelist):
 
 
 def main():
+    global dot
     phrase = str(input("What phrase?\n")).lower()  # Requests phrase
+    dot = float(input("How long for a dot? (seconds)\n"))  # Requests length of dot
     phraselist = textmorse(phrase)  # Converts phrase using dictionary to morse list
     charlist = texttomorse(phraselist)  # Converts morse list to character list
     theleds(charlist)  # Converts character list to lights

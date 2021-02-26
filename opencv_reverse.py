@@ -13,7 +13,6 @@ h, w = 480, 480
 cap = cv2.VideoCapture(cameraID)
 
 
-
 # Window with live camera feed
 while True:
     ret, frame = cap.read()

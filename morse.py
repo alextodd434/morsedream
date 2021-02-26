@@ -39,3 +39,25 @@ MorseCodes = {
     '8': 'lllss',
     '9': 'lllls',
     '0': 'lllll'}
+
+
+def textmorse(text):
+    morse = []
+    for t in text:
+        if t == '':
+            morse.append('x')
+        else:
+            morse.append(MorseCodes[t])
+        # y gap between letters
+        morse.append('y')
+    return morse
+
+
+def test(m):
+    for letter in m:
+        for symbol in letter:
+            print(symbol)
+
+
+m = textmorse("hi alex")
+test(m)

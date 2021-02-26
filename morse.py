@@ -65,3 +65,9 @@ def texttosymb(morselist):
     return symblist
 
 
+def morsetotext(morsecode):
+    sentence = []
+    test = morsecode.split()
+    for t in test:
+        sentence.append(unmorse[t])
+    return sentence

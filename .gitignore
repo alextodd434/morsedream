@@ -6,3 +6,5 @@
 .idea/misc.xml
 .idea/inspectionProfiles/profiles_settings.xml
 __pycache__/morse.cpython-38.pyc
+__pycache__/opencv_functions.cpython-38.pyc
+__pycache__/morse.cpython-38.pyc

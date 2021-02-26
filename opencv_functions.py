@@ -10,9 +10,10 @@ def cameracheck(camera):
         return False
     else:
         # Camera found
-        print(f"Using camera ID {}")
+        print(f"Using camera ID {camera}")
         cap.release()
         return True
+
 
 def main():
     print("Have you run the correct file?")

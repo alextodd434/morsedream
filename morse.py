@@ -2,72 +2,78 @@
 
 # Dictionary
 MorseCodes = {
-    ' ': '',
-    'a': 'sl',
-    'b': 'lsss',
-    'c': 'lsls',
-    'd': 'lss',
-    'e': 's',
-    'f': 'ssls',
-    'g': 'lls',
-    'h': 'ssss',
-    'i': 'ss',
-    'j': 'slll',
-    'k': 'lsl',
-    'l': 'slss',
-    'm': 'll',
-    'n': 'ls',
-    'o': 'lll',
-    'p': 'slls',
-    'q': 'llsl',
-    'r': 'sls',
-    's': 'sss',
-    't': 'l',
-    'u': 'ssl',
-    'v': 'sssl',
-    'w': 'sll',
-    'x': 'lssl',
-    'y': 'lsll',
-    'z': 'llss',
-    '1': 'sllll',
-    '2': 'sslll',
-    '3': 'sssll',
-    '4': 'ssssl',
-    '5': 'sssss',
-    '6': 'lssss',
-    '7': 'llsss',
-    '8': 'lllss',
-    '9': 'lllls',
-    '0': 'lllll'}
+    ' ': '/',
+    'a': '.-',
+    'b': '-...',
+    'c': '-.-.',
+    'd': '-..',
+    'e': '.',
+    'f': '..-.',
+    'g': '--.',
+    'h': '....',
+    'i': '..',
+    'j': '.---',
+    'k': '-.-',
+    'l': '.-..',
+    'm': '--',
+    'n': '-.',
+    'o': '---',
+    'p': '.--.',
+    'q': '--.-',
+    'r': '.-.',
+    's': '...',
+    't': '-',
+    'u': '..-',
+    'v': '...-',
+    'w': '.--',
+    'x': '-..-',
+    'y': '-.--',
+    'z': '--..',
+    '1': '.----',
+    '2': '..---',
+    '3': '...--',
+    '4': '....-',
+    '5': '.....',
+    '6': '-....',
+    '7': '--...',
+    '8': '---..',
+    '9': '----.',
+    '0': '-----'}
 
 
+# Reads backwards dictionary
 unmorse = {value: key for key, value in MorseCodes.items()}
 
 
+# Converts letters using dictionary
 def textmorse(text):
     morse = []
     for t in text:
-        if t == ' ':
-            morse.pop()
-            morse.append('x')
+        if t == ' ':  # Converts space to /
+            morse.pop()  # Removes space between characters
+            morse.append(MorseCodes[t])  # Appends / to dictionary list
         else:
-            morse.append(MorseCodes[t])
-            morse.append('y')
+            morse.append(MorseCodes[t])  # Appends dictionary conversion
+            morse.append(' ')  # Appends space after character
         # y gap between letters
     return morse
 
 
-def texttosymb(morselist):
+def texttomorse(morselist):
     symblist = []
     for m in morselist:
         for symbol in m:
-            symblist.append(symbol)
+            symblist.append(symbol)  # Converts dictionary list into list of characters
     return symblist
 
 
 def morsetotext(morsecode):
     sentence = []
     test = morsecode.split()
+    print(test)
     for t in test:
         sentence.append(unmorse[t])
     return sentence
+
+
+morsetotext('.... .. / .--- .- -.- .')

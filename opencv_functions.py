@@ -14,12 +14,14 @@ def cameracheck(camera):
         cap.release()
         return True
 
+
 def coordinatefunction(LED_x, LED_y, r_size):
     x1 = int(LED_x - r_size / 2)
     x2 = int(LED_x + r_size / 2)
     y1 = int(LED_y - r_size / 2)
     y2 = int(LED_y + r_size / 2)
     return [x1, x2, y1, y2]
+
 
 def main():
     print("Have you run the correct file?")

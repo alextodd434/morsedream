@@ -76,4 +76,11 @@ def morsetotext(morsecode):
     return sentence
 
 
+def timingWindows(dot):
+    symbol = dot
+    dash = 3 * dot
+    word = 7 * dot - 2 * symbol
+    letter = 3 * dot - 2 * symbol
+    return [dot, dash, symbol, letter, word]
+
 #morsetotext('.... .. / .--- .- -.- .')

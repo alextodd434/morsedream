@@ -30,6 +30,8 @@ previousStatus = False
 
 # Start time
 start_time = time.time()
+previousTime = 0
+currentTime = 0
 
 # Mouse clicking
 def mousepoints(event, x, y, flags, params):
@@ -84,9 +86,11 @@ while True:
         pass
     # If state changed, print current state
     else:
-        currentTime = round(time.time() - start_time)
-        print(currentstatus, currentTime)
+        currentTime = round(time.time() - start_time, 2)
+        diffTime = round(currentTime - previousTime, 2)
+        print(currentstatus, currentTime, diffTime)
     previousStatus = currentstatus
+    previousTime = currentTime
 
     # Wait for escape key
     k = cv2.waitKey(1)

@@ -9,39 +9,32 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
 GPIO.setup(17, GPIO.OUT)
 
-# List of timings
-dot = 0.25  # default time
-symbol = dot
-dash = 3 * dot
-word = 7 * dot - 2 * symbol
-letter = 3 * dot - 2 * symbol
 
-
-def theleds(thelist):
+def theleds(thelist, times):
     for i in thelist:
         if i == '.':  # If dot
             GPIO.output(18, True)
-            sleep(dot)
+            sleep(times[0])
             GPIO.output(18, False)
         elif i == '-':  # If dash
-            GPIO.output(17, True)
-            sleep(dash)
-            GPIO.output(17, False)
+            GPIO.output(18, True)
+            sleep(times[1])
+            GPIO.output(18, False)
         elif i == ' ':  # If space
-            sleep(letter)
+            sleep(times[3])
         else:  # If slash
-            sleep(word)
-        sleep(symbol)  # Space between characters
+            sleep(times[4])
+        sleep(times[2])  # Space between characters
     GPIO.cleanup()  # cleanup all GPIO
 
 
 def main():
-    global dot
     phrase = str(input("What phrase?\n")).lower()  # Requests phrase
     dot = float(input("How long for a dot? (seconds)\n"))  # Requests length of dot
     phraselist = textmorse(phrase)  # Converts phrase using dictionary to morse list
     charlist = texttomorse(phraselist)  # Converts morse list to character list
-    theleds(charlist)  # Converts character list to lights
+    timings = timingWindows(dot)  # Generate timings
+    theleds(charlist, timings)  # Converts character list to lights
 
 
 if __name__ == "__main__":

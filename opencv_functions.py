@@ -14,6 +14,7 @@ def cameracheck(camera):
         cap.release()
         return True
 
+
 def main():
     print("Have you run the correct file?")
 

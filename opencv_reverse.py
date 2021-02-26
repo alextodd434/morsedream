@@ -13,7 +13,7 @@ h, w = 480, 480
 cap = cv2.VideoCapture(cameraID)
 
 # Check camera is plugged in
-
+cameracheck(cameraID)
 
 # Window with live camera feed
 while True:

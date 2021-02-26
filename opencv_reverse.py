@@ -42,7 +42,6 @@ def mousepoints(event, x, y, flags, params):
         y2 = int(LED_y + r_size / 2)
         print("Button clicked")
 
-
 # Window with live camera feed
 while True:
     ret, frame = cap.read()

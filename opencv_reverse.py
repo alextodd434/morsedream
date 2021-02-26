@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 from morse import *
+import time
+
 from opencv_functions import *
 
 # Camera location
@@ -23,6 +25,11 @@ cap = cv2.VideoCapture(cameraID)
 # Check camera is plugged in
 cameracheck(cameraID)
 
+# LED status
+previousStatus = False
+
+# Start time
+start_time = time.time()
 
 # Mouse clicking
 def mousepoints(event, x, y, flags, params):
@@ -48,6 +55,7 @@ while True:
     else:
         pass
 
+
 while True:
     # Read camera
     ret, frame = cap.read()
@@ -68,8 +76,17 @@ while True:
     cv2.imshow("thresh", thresh)
 
     # Counting pixels
-    print(LEDstatus(thresh))
+    # Check current LED
+    currentstatus = LEDstatus(thresh)
 
+    # If same as last cycle, pass
+    if currentstatus == previousStatus:
+        pass
+    # If state changed, print current state
+    else:
+        currentTime = round(time.time() - start_time)
+        print(currentstatus, currentTime)
+    previousStatus = currentstatus
 
     # Wait for escape key
     k = cv2.waitKey(1)

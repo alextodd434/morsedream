@@ -10,30 +10,33 @@ from morse import *
 
 # List of timings
 dot = 0.1  # default time
-dash = 3 * dot
-word = 7 * dot
-letter = 3 * dot
 symbol = dot
+dash = 3 * dot
+word = 7 * dot - 2 * symbol
+letter = 3 * dot - 2 * symbol
 
 
 def theleds(thelist):
     for i in thelist:
         if i == 's':
-            print("dot")
+            #print("dot")
+            GPIO.output(18, True)
             sleep(dot)
-            print("symbol")
-            sleep(symbol)
+            GPIO.output(18, False)
         elif i == 'l':
-            print("dash")
+            #print("dash")
+            GPIO.output(18, True)
             sleep(dash)
-            print("symbol")
-            sleep(symbol)
+            GPIO.output(18, False)
         elif i == 'y':
-            print('letter')
+            #print('letter')
             sleep(letter)
         else:
-            print("word")
+            #print("word")
             sleep(word)
+        #print("symbol")
+        sleep(symbol)
+    GPIO.cleanup()  # cleanup all GPIO
 
 
 def main():

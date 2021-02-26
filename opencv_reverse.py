@@ -16,10 +16,6 @@ r_thickness = 2
 
 # LED Location
 LED_x, LED_y = 0, 0
-x1, x2, y1, y2 = 0, 0, 0, 0
-
-# Window height and width
-h, w = 480, 480
 
 # Set up capture
 cap = cv2.VideoCapture(cameraID)
@@ -30,7 +26,7 @@ cameracheck(cameraID)
 
 # Mouse clicking
 def mousepoints(event, x, y, flags, params):
-    global LED_x, LED_y, ledClicked, x1, x2, y1, y2
+    global LED_x, LED_y, ledClicked
     if event == cv2.EVENT_LBUTTONDBLCLK:
         ledClicked = True
         LED_x = x
@@ -42,9 +38,9 @@ while True:
     ret, frame = cap.read()
     cv2.setMouseCallback("Camera Feed", mousepoints)
     if ledClicked:
-        sqc = coordinatefunction(LED_x, LED_y, r_size)
-        cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)
-        crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]
+        sqc = coordinatefunction(LED_x, LED_y, r_size)  # Generates coordinates for square
+        cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)  # Creates square
+        crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]  # Crops to square
         cv2.imshow("test crop", crop)
 
     cv2.imshow("Camera Feed", frame)

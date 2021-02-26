@@ -2,6 +2,7 @@
 
 import RPi.GPIO as GPIO
 from time import sleep
+from morse import *
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)

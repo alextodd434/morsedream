@@ -32,7 +32,22 @@ previousStatus = False
 start_time = previousTime = currentTime = 0
 
 # Set a dot time
+dot = float(input("How long for a dot? (seconds)\n"))
+symbol = dot
+dash = 3 * dot
+word = 7 * dot
+letter = 3 * dot
 
+# Number of truths (to help with start_time)
+numTrue = 0
+numCompleted = 0
+
+# Reminds user to set box
+print("Please select box around light")
+
+# Generate symbol list
+symbolList = []
+stringWord = ''
 
 # Mouse clicking
 def mousepoints(event, x, y, flags, params):
@@ -80,22 +95,50 @@ while True:
 
     # Counting pixels
     # Check current LED
-    currentstatus = LEDstatus(thresh)
+    currentStatus = LEDstatus(thresh)
 
     # If same as last cycle, pass
-    if currentstatus == previousStatus:
+    if currentStatus == previousStatus:
         pass
+
     # If state changed, print current state
     else:
         currentTime = round(time.time() - start_time, 2)
         diffTime = round(currentTime - previousTime, 2)
-        print(currentstatus, currentTime, diffTime)
-    previousStatus = currentstatus
+        numTrue = 1
+        print(currentStatus, currentTime, diffTime)
+
+        # Determines ends of letters '|' or words '\' when False
+        if currentStatus == True:
+            if 0.7 * word < diffTime:
+                symbolList.append(stringWord)
+                symbolList.append('/')  # Appending / for end of Word
+                stringWord = ''
+            elif 0.7 * letter < diffTime < 1.3 * letter:
+                symbolList.append(stringWord)
+                symbolList.append(' ')
+                stringWord = ''
+        # Adds . or - symbol when True
+        else:
+            if 2 * dot < diffTime:
+                stringWord += '-'
+            else:
+                stringWord += '.'
+
+
+    previousStatus = currentStatus
     previousTime = currentTime
+
+    # Sets start_time until numTrue > 0
+    # numCompleted needs to be set after completed phrase
+    if numTrue == numCompleted:
+        start_time = time.time()
 
     # Wait for escape key
     k = cv2.waitKey(1)
     if k == 27:  # Escape key
+        print(symbolList)
         break
     else:
         pass
+

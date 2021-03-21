@@ -29,7 +29,7 @@ def coordinatefunction(LED_x, LED_y, r_size):
 # Checks if LED is on again value 1000
 def LEDstatus(threshold):
     numwhite = np.sum(threshold == 255)
-    if numwhite > 1000:
+    if numwhite > 600:
         return True
     else:
         return False

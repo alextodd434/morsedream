@@ -29,9 +29,10 @@ cameracheck(cameraID)
 previousStatus = False
 
 # Start time
-start_time = time.time()
-previousTime = 0
-currentTime = 0
+start_time = previousTime = currentTime = 0
+
+# Set a dot time
+
 
 # Mouse clicking
 def mousepoints(event, x, y, flags, params):

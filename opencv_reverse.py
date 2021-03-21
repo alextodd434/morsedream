@@ -129,6 +129,7 @@ while True:
     if k == 27:  # Escape key
         symbolList.append(stringWord)
         print(symbolList)
+        print(morsetotext(symbolList))
         break
     else:
         pass

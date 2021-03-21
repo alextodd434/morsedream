@@ -2,6 +2,7 @@
 
 # Dictionary
 MorseCodes = {
+    '/': ' ',
     ' ': '/',
     'a': '.-',
     'b': '-...',
@@ -69,10 +70,13 @@ def texttomorse(morselist):
 
 def morsetotext(morsecode):
     sentence = []
-    test = morsecode.split()
-    print(test)
-    for t in test:
-        sentence.append(unmorse[t])
+    for t in range(2, len(morsecode)):
+        if t == "":
+            pass
+        else:
+            sentence.append(unmorse[morsecode[t]])
+    sentence = "".join(sentence)
+    sentence = sentence.replace('/', '')
     return sentence
 
 
@@ -83,4 +87,4 @@ def timingWindows(dot):
     letter = 3 * dot - 2 * symbol
     return [dot, dash, symbol, letter, word]
 
-#morsetotext('.... .. / .--- .- -.- .')
+print(morsetotext(['', '/', '....', ' ', '.', ' ', '.-..', ' ', '.-..', ' ', '---', '/', '..-.', ' ', '.-.', ' ', '..', ' ', '.', ' ', '-.', ' ', '-..', ' ', '---', '/', '....', ' ', '---', ' ', '.--', '/', '-.--', ' ', '---', ' ', '..-']))

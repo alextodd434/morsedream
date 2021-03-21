@@ -74,7 +74,10 @@ def morsetotext(morsecode):
         if t == "":
             pass
         else:
-            sentence.append(unmorse[morsecode[t]])
+            try:
+                sentence.append(unmorse[morsecode[t]])
+            except KeyError:
+                pass
     sentence = "".join(sentence)
     sentence = sentence.replace('/', '')
     return sentence

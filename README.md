@@ -6,9 +6,19 @@ A Python implementation of a Morse code translator. Uses a Raspberry Pi to encod
 
 ## Usage
 
+ 1. Run `opencv_reverse.py`, which will bring up a video feed from the computer's primary webcam. It will ask `how long for a dot?`. This question is also asked by the script ran on the Raspberry Pi, and need to be consistent. A value of 0.2 seconds is reasonable. 
+
+ 2. Place the LED in view of the camera feed, then double click the LED to place a green box around it. Three smaller windows will pop up, showing the cropped video, greyscale video and video with threshold applied. 
+ 3.  You may need to adjust the threshhold value in the code. The threshold video feed should be almost entirely black. 
+
+ 4. Log into the Raspberry Pi and run `TextToLights.py`. Enter the same dot time length as entered in step 1 when prompted. Enter a phrase to translate when prompted, and hit enter.
+
+ 5. Once `TextToLights.py` has finished running, close `opencv_reverse.py`, which will return the translated phrase entered in step 4.
+
+
 
 ## Video Demonstration
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE "Video Title")
+[![Morsedream video link](video_thumbnail.png)](https://www.youtube.com/watch?v=a2ESEAYGp-U "Morsedream")
 
 ## Requirements
 Requirements listed in requirements.txt are as follows:

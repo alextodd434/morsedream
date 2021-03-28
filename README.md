@@ -24,6 +24,8 @@ A Python implementation of a Morse code translator. Uses a Raspberry Pi to encod
 <br>
 <br>
 <br>
+
+
 4. Log into the Raspberry Pi and run `TextToLights.py`. Enter the same dot time length as entered in step 1 when prompted. Enter a phrase to translate when prompted, and hit enter.
 
 5. Once `TextToLights.py` has finished running, close `opencv_reverse.py`, which will return the translated phrase entered in step 4.

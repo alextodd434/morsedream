@@ -8,7 +8,7 @@ A Python implementation of a Morse code translator. Uses a Raspberry Pi to encod
 ## Setup
 1. Connect an LED to GPIO 18 on the Raspberry Pi.
 2. Connect a 470\ohm resistor between the LED's ground pin and ground on the Raspberry Pi
-3. Ensure `TextToLights.py` is on the Rasberry Pi and the rest of the files are on a computer with a webcam.
+3. Ensure `TextToLights.py` and `morse_function.py` is on the Rasberry Pi and the rest of the files are on a computer with a webcam.
 
 ## Usage
 

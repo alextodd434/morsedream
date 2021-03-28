@@ -1,6 +1,7 @@
+# Uses camera to detect morse code light flashes and convert to text
+
+from time import time
 import cv2
-import numpy as np
-import time
 from morse_functions import *
 from opencv_functions import *
 
@@ -28,7 +29,7 @@ camera_check(cameraID)
 previousStatus = False
 
 # Start time
-start_time = time.time()
+start_time = time()
 previousTime = currentTime = 0
 
 # Set a dot time and other required times
@@ -74,9 +75,9 @@ while True:
     ret, frame = cap.read()
 
     # Get cropping coordinates and crop
-    sqc = coordinate_function(LED_x, LED_y, r_size)  # Generates coordinates for square
+    sqc = coordinate_function(LED_x, LED_y, r_size)                                  # Generates coordinates for square
     cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)  # Creates square
-    crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]  # Crops to square
+    crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]                                       # Crops to square
 
     # Threshold
     grey = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
@@ -97,7 +98,7 @@ while True:
 
     # If state changed, print current state
     else:
-        currentTime = round(time.time() - start_time, 2)
+        currentTime = round(time() - start_time, 2)
         diffTime = round(currentTime - previousTime, 2)
         # numTrue = 1
         print(currentStatus, currentTime, diffTime)

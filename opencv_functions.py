@@ -2,7 +2,6 @@
 
 import cv2
 from numpy import sum
-import time  # Is this needed here?
 
 
 def camera_check(camera):
@@ -31,7 +30,7 @@ def coordinate_function(LED_x, LED_y, r_size):
 # Checks if LED is on again value 1000
 def LED_status(threshold):
     num_white = sum(threshold == 255)
-    if num_white > 50:
+    if num_white > 200:
         return True
     else:
         return False

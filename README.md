@@ -1,5 +1,5 @@
 # Morsedream
-<img src="image.png" alt="Moresdream Picture" style="float: left; margin-right: 10px;" />
+<img src="image.PNG" alt="Moresdream Picture" style="float: left; margin-right: 10px;" />
 
 ## About
 A Python implementation of a Morse code translator. Uses a Raspberry Pi to encode text into Morse Code which is flashed by an LED. A second computer with a webcam is then used to decode the LED flashes into human-readable text.

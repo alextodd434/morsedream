@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 import time
 from morse_functions import *
 from opencv_functions import *
@@ -131,4 +130,3 @@ while True:
         break
     else:
         pass
-

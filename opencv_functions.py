@@ -2,7 +2,6 @@
 
 import cv2
 from numpy import sum
-import time  # Is this needed here?
 
 
 def camera_check(camera):

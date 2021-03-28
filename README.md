@@ -33,7 +33,7 @@ A Python implementation of a Morse code translator. Uses a Raspberry Pi to encod
 
 
 ## Video Demonstration
-[![Morsedream video link](video_thumbnail.PNG)](https://www.youtube.com/watch?v=a2ESEAYGp-U "Morsedream")
+[![Morsedream video link](video_thumbnail.PNG)](https://www.youtube.com/watch?v=3r-L3AG8N24 "Morsedream")
 
 ## Requirements
 Requirements listed in requirements.txt are as follows:

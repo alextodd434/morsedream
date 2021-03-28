@@ -8,7 +8,7 @@ A Python implementation of a Morse code translator. Uses a Raspberry Pi to encod
 
 
 ## Video Demonstration
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE "Video Title")
+[![Youtube Video](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE "Video Title")
 
 ## Requirements
 Requirements listed in requirements.txt are as follows:

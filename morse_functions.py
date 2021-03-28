@@ -1,7 +1,7 @@
-# Module for Morse Project
+# Module for Morse Functions within Morse Project
 
-# Dictionary
-MorseCodes = {
+# Dictionary of letters to morse
+morseDictionary = {
     '/': ' ',
     ' ': '/',
     'a': '.-',
@@ -43,39 +43,41 @@ MorseCodes = {
 
 
 # Reads backwards dictionary
-unmorse = {value: key for key, value in MorseCodes.items()}
+unmorseDictionary = {value: key for key, value in morseDictionary.items()}
 
 
 # Converts letters using dictionary
-def textmorse(text):
+def text_morse(text):
     morse = []
     for t in text:
         if t == ' ':  # Converts space to /
             morse.pop()  # Removes space between characters
-            morse.append(MorseCodes[t])  # Appends / to dictionary list
+            morse.append(morseDictionary[t])  # Appends / to dictionary list
         else:
-            morse.append(MorseCodes[t])  # Appends dictionary conversion
+            morse.append(morseDictionary[t])  # Appends dictionary conversion
             morse.append(' ')  # Appends space after character
         # y gap between letters
     return morse
 
 
-def texttomorse(morselist):
-    symblist = []
-    for m in morselist:
+# Converts letters to morse . and -
+def text_to_morse(morse_list):
+    symb_list = []
+    for m in morse_list:
         for symbol in m:
-            symblist.append(symbol)  # Converts dictionary list into list of characters
-    return symblist
+            symb_list.append(symbol)  # Converts dictionary list into list of characters
+    return symb_list
 
 
-def morsetotext(morsecode):
+# Converts morse . and - to letters
+def morse_to_text(morse_code):
     sentence = []
-    for t in range(2, len(morsecode)):
+    for t in range(2, len(morse_code)):
         if t == "":
             pass
         else:
             try:
-                sentence.append(unmorse[morsecode[t]])
+                sentence.append(unmorseDictionary[morse_code[t]])
             except KeyError:
                 pass
     sentence = "".join(sentence)
@@ -83,11 +85,19 @@ def morsetotext(morsecode):
     return sentence
 
 
-def timingWindows(dot):
+# Defines timing windows for Morse code
+def timing_windows(dot):
     symbol = dot
     dash = 3 * dot
     word = 7 * dot - 2 * symbol
     letter = 3 * dot - 2 * symbol
     return [dot, dash, symbol, letter, word]
 
-print(morsetotext(['', '/', '....', ' ', '.', ' ', '.-..', ' ', '.-..', ' ', '---', '/', '..-.', ' ', '.-.', ' ', '..', ' ', '.', ' ', '-.', ' ', '-..', ' ', '---', '/', '....', ' ', '---', ' ', '.--', '/', '-.--', ' ', '---', ' ', '..-']))
+
+# Warning to confirm if functions file was run independently
+def main():
+    print("Have you run the correct file?")
+
+
+if __name__ == "__main__":
+    main()

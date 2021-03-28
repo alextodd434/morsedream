@@ -1,9 +1,11 @@
+# Module for OpenCV functions within Morse Project
+
 import cv2
-import numpy as np
-import time
+from numpy import sum
+import time  # Is this needed here?
 
 
-def cameracheck(camera):
+def camera_check(camera):
     # Check if specified camera ID is plugged in
     cap = cv2.VideoCapture(camera)
     if cap is None or not cap.isOpened():
@@ -18,7 +20,7 @@ def cameracheck(camera):
 
 
 # Sets coordinates of square based on click
-def coordinatefunction(LED_x, LED_y, r_size):
+def coordinate_function(LED_x, LED_y, r_size):
     x1 = int(LED_x - r_size / 2)
     x2 = int(LED_x + r_size / 2)
     y1 = int(LED_y - r_size / 2)
@@ -27,14 +29,15 @@ def coordinatefunction(LED_x, LED_y, r_size):
 
 
 # Checks if LED is on again value 1000
-def LEDstatus(threshold):
-    numwhite = np.sum(threshold == 255)
-    if numwhite > 200:
+def LED_status(threshold):
+    num_white = sum(threshold == 255)
+    if num_white > 50:
         return True
     else:
         return False
 
 
+# Warning to confirm if functions file was run independently
 def main():
     print("Have you run the correct file?")
 

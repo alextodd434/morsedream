@@ -1,8 +1,7 @@
 import cv2
 import numpy as np
-from morse import *
 import time
-
+from morse_functions import *
 from opencv_functions import *
 
 # Camera location
@@ -23,7 +22,7 @@ LED_x, LED_y = 0, 0
 cap = cv2.VideoCapture(cameraID)
 
 # Check camera is plugged in
-cameracheck(cameraID)
+camera_check(cameraID)
 
 # LED status
 previousStatus = False
@@ -32,22 +31,21 @@ previousStatus = False
 start_time = time.time()
 previousTime = currentTime = 0
 
-# Set a dot time
+# Set a dot time and other required times
 dot = float(input("How long for a dot? (seconds)\n"))
-# symbol = dot
-# dash = 3 * dot
 word = 7 * dot
 letter = 3 * dot
 
 # Reminds user to set box
-print("Please select box around light")
+print("Please select box around morse light source")
 
 # Generate symbol list
 symbolList = []
 stringWord = ''
 
+
 # Mouse clicking
-def mousepoints(event, x, y, flags, params):
+def mouse_points(event, x, y, flags, params):
     global LED_x, LED_y, ledClicked
     if event == cv2.EVENT_LBUTTONDBLCLK:
         ledClicked = True
@@ -60,7 +58,7 @@ def mousepoints(event, x, y, flags, params):
 while True:
     ret, frame = cap.read()
     cv2.imshow("Camera Feed", frame)
-    cv2.setMouseCallback("Camera Feed", mousepoints)
+    cv2.setMouseCallback("Camera Feed", mouse_points)
     if ledClicked:
         break
 
@@ -76,7 +74,7 @@ while True:
     ret, frame = cap.read()
 
     # Get cropping coordinates and crop
-    sqc = coordinatefunction(LED_x, LED_y, r_size)  # Generates coordinates for square
+    sqc = coordinate_function(LED_x, LED_y, r_size)  # Generates coordinates for square
     cv2.rectangle(frame, (sqc[0], sqc[2]), (sqc[1], sqc[3]), r_colour, r_thickness)  # Creates square
     crop = frame[sqc[2]:sqc[3], sqc[0]:sqc[1]]  # Crops to square
 
@@ -91,7 +89,7 @@ while True:
     cv2.imshow("thresh", thresh)
 
     # Check current LED
-    currentStatus = LEDstatus(thresh)
+    currentStatus = LED_status(thresh)
 
     # If same as last cycle, pass
     if currentStatus == previousStatus:
@@ -105,7 +103,7 @@ while True:
         print(currentStatus, currentTime, diffTime)
 
         # Determines ends of letters '|' or words '\' when False
-        if currentStatus == True:
+        if currentStatus:
             if 0.7 * word < diffTime:
                 symbolList.append(stringWord)
                 symbolList.append('/')  # Appends / for end of Word
@@ -129,7 +127,7 @@ while True:
     if k == 27:  # Escape key
         symbolList.append(stringWord)
         print(symbolList)
-        print(morsetotext(symbolList))
+        print(morse_to_text(symbolList))
         break
     else:
         pass
